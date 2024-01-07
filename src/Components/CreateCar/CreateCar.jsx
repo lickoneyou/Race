@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./CreateCar.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { CarConstructor } from "../../handlers/carConstructor";
 
 export const CreateCar = () => {
   const [inputVaule, setInputValue] = useState("");
+  const dispatch = useDispatch();
+  const colorRef = useRef();
 
   const notify = () =>
     toast.error("Enter car name", {
@@ -25,7 +29,12 @@ export const CreateCar = () => {
   const onClickHandler = () => {
     if (!inputVaule) {
       notify();
+      return;
     }
+    dispatch({
+      type: "ADD_CAR",
+      payload: new CarConstructor(inputVaule, colorRef.current.value),
+    });
   };
 
   return (
@@ -46,6 +55,7 @@ export const CreateCar = () => {
             defaultValue="#ff4500"
             className={styles.color}
             id="color"
+            ref={colorRef}
           />
           <label className={styles.colorLabel} htmlFor="color">
             Choose car color
