@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 50px;
+}
+
+.title {
+  font-family: "Lilita One", sans-serif;
+  color: white;
+  font-size: 30px;
+  margin: 0 auto;
+}

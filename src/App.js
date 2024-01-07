@@ -1,7 +1,7 @@
 import "./App.css";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
-import HeaderGame from "./Components/Header/HeaderGame";
-import HeaderScore from "./Components/Header/HeaderScore";
+import HeaderGame from "./Components/Headers/HeaderGame";
+import HeaderScore from "./Components/Headers/HeaderScore";
 
 function App() {
   return (
