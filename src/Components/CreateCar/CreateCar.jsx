@@ -2,16 +2,17 @@ import React, { useRef, useState } from "react";
 import styles from "./CreateCar.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CarConstructor } from "../../handlers/carConstructor";
 
 export const CreateCar = () => {
   const [inputVaule, setInputValue] = useState("");
   const dispatch = useDispatch();
   const colorRef = useRef();
+  const cars = useSelector((state) => state.raceCars);
 
-  const notify = () =>
-    toast.error("Enter car name", {
+  const notify = (text) =>
+    toast.error(text, {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -28,7 +29,13 @@ export const CreateCar = () => {
 
   const onClickHandler = () => {
     if (!inputVaule) {
-      notify();
+      notify("Enter car name");
+      return;
+    }
+    if (!!cars.find((car) => car.name === inputVaule)) {
+      notify(
+        `Car "${inputVaule}" already exists, please select a different name`
+      );
       return;
     }
     dispatch({
