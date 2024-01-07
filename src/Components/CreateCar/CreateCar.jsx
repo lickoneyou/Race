@@ -1,24 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./CreateCar.module.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const CreateCar = () => {
+  const [inputVaule, setInputValue] = useState("");
+
+  const notify = () =>
+    toast.error("Enter car name", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+
+  const onChangeHandler = (e) => {
+    setInputValue((inputVaule) => (inputVaule = e.target.value));
+  };
+
+  const onClickHandler = () => {
+    if (!inputVaule) {
+      notify();
+    }
+  };
+
   return (
     <>
+      <ToastContainer />
       <h2 className={styles.createCarTitle}>Create Car:</h2>
       <div className={styles.inputsContainer}>
-        <input className={styles.carName} placeholder="Enter car name..." />
+        <input
+          type="text"
+          className={styles.carName}
+          placeholder="Enter car name..."
+          value={inputVaule}
+          onChange={onChangeHandler}
+        />
         <div className={styles.colorContainer}>
           <input
             type="color"
-            value="#ff4500"
+            defaultValue="#ff4500"
             className={styles.color}
             id="color"
           />
-          <label className={styles.colorLabel} for="color">
+          <label className={styles.colorLabel} htmlFor="color">
             Choose car color
           </label>
         </div>
-        <button className={styles.createCarBtn}>Create Car</button>
+        <button onClick={onClickHandler} className={styles.createCarBtn}>
+          Create Car
+        </button>
       </div>
     </>
   );
