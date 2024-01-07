@@ -5,7 +5,7 @@ import styles from "./MainGame.module.css";
 
 const MainGame = () => {
   return (
-    <main>
+    <main className={styles.main}>
       <CreateCar />
       <hr className={styles.hr} />
       <ControlPanel />

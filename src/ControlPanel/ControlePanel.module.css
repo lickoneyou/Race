@@ -8,6 +8,11 @@
   font-size: 16px;
   font-family: "Lilita One", sans-serif;
   transition: all 500ms ease;
+  margin-right: 30px;
+}
+
+.btn:last-child {
+  margin-right: 0;
 }
 
 .btn:hover {
@@ -19,4 +24,8 @@
   color: white;
   font-family: "Lilita One", sans-serif;
   font-size: 20px;
+}
+
+.controlPanelContainer {
+  margin: 20px 0;
 }
