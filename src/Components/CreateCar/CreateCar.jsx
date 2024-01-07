@@ -35,6 +35,7 @@ export const CreateCar = () => {
       type: "ADD_CAR",
       payload: new CarConstructor(inputVaule, colorRef.current.value),
     });
+    setInputValue("");
   };
 
   return (
