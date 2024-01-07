@@ -31,6 +31,17 @@ export const reducer = (state, action) => {
       );
       state = JSON.parse(localStorage.getItem("race"));
       return state;
+    case "DELETE_CAR": {
+      localStorage.setItem(
+        "race",
+        JSON.stringify({
+          ...state,
+          raceCars: state.raceCars.filter((car) => car.name !== action.payload),
+        })
+      );
+      state = JSON.parse(localStorage.getItem("race"));
+      return state;
+    }
     default:
       return state;
   }

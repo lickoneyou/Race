@@ -1,11 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CarImg from "../CarImg/CarImg";
 import styles from "./Car.module.css";
 import flag from "../../img/flag.png";
 
 const Car = () => {
   const cars = useSelector((state) => state.raceCars);
+  const dispatch = useDispatch();
+
+  const deleteCarHandler = (name) => {
+    dispatch({ type: "DELETE_CAR", payload: name });
+  };
 
   return (
     <div>
@@ -17,7 +22,12 @@ const Car = () => {
           <hr className={styles.hr} />
           <div className={styles.carControlContainer}>
             <p className={styles.descr}>{car.name}</p>
-            <button className={styles.btn}>Delete this car</button>
+            <button
+              onClick={() => deleteCarHandler(car.name)}
+              className={styles.btn}
+            >
+              Delete this car
+            </button>
           </div>
         </div>
       ))}
