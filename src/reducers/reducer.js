@@ -21,6 +21,16 @@ export const reducer = (state, action) => {
       );
       state = JSON.parse(localStorage.getItem("race"));
       return state;
+    case "REMOVE_ALL_CARS":
+      localStorage.setItem(
+        "race",
+        JSON.stringify({
+          ...state,
+          raceCars: [],
+        })
+      );
+      state = JSON.parse(localStorage.getItem("race"));
+      return state;
     default:
       return state;
   }
