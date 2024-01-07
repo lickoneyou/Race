@@ -40,7 +40,7 @@ export const CreateCar = () => {
   return (
     <>
       <ToastContainer />
-      <h2 className={styles.createCarTitle}>Create Car:</h2>
+      <h2 className={styles.createCarTitle}>Create car:</h2>
       <div className={styles.inputsContainer}>
         <input
           type="text"
