@@ -1,0 +1,73 @@
+.createCarTitle {
+  color: white;
+  font-family: "Lilita One", sans-serif;
+  font-size: 20px;
+}
+
+.carName {
+  border: none;
+  border-bottom: 1px solid white;
+  font-family: "Lilita One", sans-serif;
+  color: white;
+  padding: 0px 0px 5px 5px;
+}
+
+.carName::placeholder {
+  color: white;
+}
+
+.inputsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+}
+
+.colorContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.colorLabel {
+  font-family: "Lilita One", sans-serif;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+}
+
+.color {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+}
+.color::-webkit-color-swatch {
+  border-radius: 50%;
+  border: 7px solid #000000;
+}
+.color::-moz-color-swatch {
+  border-radius: 50%;
+  border: 7px solid #000000;
+}
+
+.createCarBtn {
+  border: 2px solid white;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: "Lilita One", sans-serif;
+  transition: all 500ms ease;
+}
+
+.createCarBtn:hover {
+  background-color: white;
+  color: black;
+}
