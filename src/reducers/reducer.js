@@ -42,6 +42,16 @@ export const reducer = (state, action) => {
       state = JSON.parse(localStorage.getItem("race"));
       return state;
     }
+    case "START":
+      localStorage.setItem(
+        "race",
+        JSON.stringify({
+          ...state,
+          raceCars: state.raceCars.map((el) => ({ ...el, pos: el.pos + 1 })),
+        })
+      );
+      state = JSON.parse(localStorage.getItem("race"));
+      return state;
     default:
       return state;
   }

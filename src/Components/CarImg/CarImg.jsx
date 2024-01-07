@@ -1,6 +1,6 @@
 import React from "react";
 
-const CarImg = ({ color }) => {
+const CarImg = ({ color, pos }) => {
   return (
     <svg
       version="1.0"
@@ -9,6 +9,7 @@ const CarImg = ({ color }) => {
       height="100.000000pt"
       viewBox="0 0 1280.000000 640.000000"
       preserveAspectRatio="xMidYMid meet"
+      style={{ marginLeft: `${pos}%` }}
     >
       <g
         transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)"
