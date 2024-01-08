@@ -4,38 +4,35 @@ import { useDispatch } from "react-redux";
 
 const ControlPanel = () => {
   const dispatch = useDispatch();
-  const [state, setS] = useState(0);
+  const [isRaceAvailable, setIsRaceAvailable] = useState(false);
 
   const removeAllCarsHandler = () => {
     dispatch({ type: "REMOVE_ALL_CARS" });
   };
 
   const startRaceHandler = () => {
+    setIsRaceAvailable((state) => (state = true));
+  };
+
+  const drowRaceHandler = () => {
     if (
       JSON.parse(localStorage.getItem("race")).raceCars.every(
         (el) => el.pos === 80
       )
     ) {
+      setIsRaceAvailable((state) => (state = false));
       return false;
     }
     dispatch({ type: "START" });
   };
 
-  // useEffect(
-  //   () =>
-  //     setInterval(() => {
-  //       setS((state) => (state += 1));
-  //       console.log(state);
-  //     }, 1000),
-  //   [state]
-  // );
-
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     setS((state) => (state += 1));
-  //     console.log(state);
-  //   }, 1000);
-  // }, [state]);
+  useEffect(() => {
+    let timer = null;
+    if (isRaceAvailable) {
+      timer = setInterval(() => drowRaceHandler(), 30);
+    }
+    return () => clearInterval(timer);
+  });
 
   return (
     <section>
