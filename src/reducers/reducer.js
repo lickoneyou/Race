@@ -1,3 +1,5 @@
+import carSpeed from "../handlers/carSpeed";
+
 export const reducer = (state, action) => {
   const defaultState = {
     allCars: [],
@@ -47,7 +49,10 @@ export const reducer = (state, action) => {
         "race",
         JSON.stringify({
           ...state,
-          raceCars: state.raceCars.map((el) => ({ ...el, pos: el.pos + 1 })),
+          raceCars: state.raceCars.map((el) => ({
+            ...el,
+            pos: el.pos >= 80 ? el.pos : el.pos + el.speed,
+          })),
         })
       );
       state = JSON.parse(localStorage.getItem("race"));
@@ -58,6 +63,16 @@ export const reducer = (state, action) => {
         JSON.stringify({
           ...state,
           raceCars: state.raceCars.map((el) => ({ ...el, pos: 0 })),
+        })
+      );
+      state = JSON.parse(localStorage.getItem("race"));
+      return state;
+    case "CREATE_CARS_SPEED":
+      localStorage.setItem(
+        "race",
+        JSON.stringify({
+          ...state,
+          raceCars: state.raceCars.map((el) => ({ ...el, speed: carSpeed() })),
         })
       );
       state = JSON.parse(localStorage.getItem("race"));

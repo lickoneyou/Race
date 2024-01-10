@@ -33,6 +33,7 @@ const ControlPanel = () => {
     if (raceCars.length < 2) {
       notify("Add 2 or more cars");
     } else {
+      dispatch({ type: "CREATE_CARS_SPEED" });
       setIsRaceAvailable((state) => (state = true));
       dispatch({ type: "DISABLED" });
       dispatch({ type: "SCORE_DISABLED" });
@@ -42,7 +43,7 @@ const ControlPanel = () => {
   const drowRaceHandler = () => {
     if (
       JSON.parse(localStorage.getItem("race")).raceCars.every(
-        (el) => el.pos === 80
+        (el) => el.pos >= 80
       )
     ) {
       setIsRaceAvailable((state) => (state = false));
