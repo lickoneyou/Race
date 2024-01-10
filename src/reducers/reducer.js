@@ -1,4 +1,5 @@
 import carSpeed from "../handlers/carSpeed";
+import time from "../handlers/time";
 
 export const reducer = (state, action) => {
   const defaultState = {
@@ -52,6 +53,7 @@ export const reducer = (state, action) => {
           raceCars: state.raceCars.map((el) => ({
             ...el,
             pos: el.pos >= 80 ? el.pos : el.pos + el.speed,
+            time: time(el.pos, el.speed),
           })),
         })
       );

@@ -5,5 +5,7 @@ export class CarConstructor {
     this.wins = 0;
     this.speed = 0;
     this.pos = 0;
+    this.time = 0;
+    this.bestTime = 0;
   }
 }
