@@ -1,12 +1,26 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ControlPanel.module.css";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
 
 const ControlPanel = () => {
   const dispatch = useDispatch();
   const [isRaceAvailable, setIsRaceAvailable] = useState(false);
   const disabled = useSelector((state) => state.disabled);
+  const raceCars = useSelector((state) => state.race.raceCars);
   const [disabledRestartBtn, setDisabledRestartBtn] = useState(true);
+
+  const notify = (text) =>
+    toast.error(text, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
 
   const removeAllCarsHandler = () => {
     dispatch({ type: "REMOVE_ALL_CARS" });
@@ -14,8 +28,12 @@ const ControlPanel = () => {
   };
 
   const startRaceHandler = () => {
-    setIsRaceAvailable((state) => (state = true));
-    dispatch({ type: "DISABLED" });
+    if (raceCars.length < 2) {
+      notify("Add 2 or more cars");
+    } else {
+      setIsRaceAvailable((state) => (state = true));
+      dispatch({ type: "DISABLED" });
+    }
   };
 
   const drowRaceHandler = () => {
