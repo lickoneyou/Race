@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ControlPanel.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const ControlPanel = () => {
   const dispatch = useDispatch();
