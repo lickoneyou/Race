@@ -1,6 +1,7 @@
 import carSpeed from "../handlers/carSpeed";
 import addCarHandler from "../handlers/localStorageHandlers/addCarHandler";
 import deleteCarHandler from "../handlers/localStorageHandlers/deleteCarHandler";
+import refreshHandler from "../handlers/localStorageHandlers/refreshHandler";
 import removeAllCarsHandler from "../handlers/localStorageHandlers/removeAllCarsHandler";
 import startHandler from "../handlers/localStorageHandlers/startHandler";
 
@@ -27,15 +28,7 @@ export const reducer = (state, action) => {
     case "START":
       return startHandler(state);
     case "REFRESH":
-      localStorage.setItem(
-        "race",
-        JSON.stringify({
-          ...state,
-          raceCars: state.raceCars.map((el) => ({ ...el, pos: 0 })),
-        })
-      );
-      state = JSON.parse(localStorage.getItem("race"));
-      return state;
+      return refreshHandler(state);
     case "CREATE_CARS_SPEED":
       localStorage.setItem(
         "race",
