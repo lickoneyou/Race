@@ -9,6 +9,7 @@ const ControlPanel = () => {
 
   const removeAllCarsHandler = () => {
     dispatch({ type: "REMOVE_ALL_CARS" });
+    dispatch({ type: "ENABLE" });
   };
 
   const startRaceHandler = () => {

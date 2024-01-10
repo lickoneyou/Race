@@ -4,6 +4,10 @@ const disabledReducer = (state = false, action) => {
       state = true;
       return state;
     }
+    case "ENABLE": {
+      state = false;
+      return state;
+    }
     default:
       return state;
   }
