@@ -10,6 +10,7 @@ export const CreateCar = () => {
   const dispatch = useDispatch();
   const colorRef = useRef();
   const cars = useSelector((state) => state.race.raceCars);
+  const disabled = useSelector((state) => state.disabled);
 
   const notify = (text) =>
     toast.error(text, {
@@ -56,6 +57,7 @@ export const CreateCar = () => {
           placeholder="Enter car name..."
           value={inputVaule}
           onChange={onChangeHandler}
+          disabled={disabled}
         />
         <div className={styles.colorContainer}>
           <input
@@ -64,12 +66,17 @@ export const CreateCar = () => {
             className={styles.color}
             id="color"
             ref={colorRef}
+            disabled={disabled}
           />
           <label className={styles.colorLabel} htmlFor="color">
             Choose car color
           </label>
         </div>
-        <button onClick={onClickHandler} className={styles.createCarBtn}>
+        <button
+          onClick={onClickHandler}
+          className={styles.createCarBtn}
+          disabled={disabled}
+        >
           Create Car
         </button>
       </div>

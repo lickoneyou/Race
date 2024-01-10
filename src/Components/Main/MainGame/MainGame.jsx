@@ -1,6 +1,6 @@
 import React from "react";
 import { CreateCar } from "../../CreateCar/CreateCar";
-import ControlPanel from "../../../ControlPanel/ControlPanel";
+import ControlPanel from "../../ControlPanel/ControlPanel";
 import styles from "./MainGame.module.css";
 import Car from "../../Car/Car";
 

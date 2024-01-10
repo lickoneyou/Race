@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import styles from "./ControlePanel.module.css";
-import { useDispatch } from "react-redux";
+import styles from "./ControlPanel.module.css";
+import { useDispatch, useSelector } from "react-redux";
 
 const ControlPanel = () => {
   const dispatch = useDispatch();
   const [isRaceAvailable, setIsRaceAvailable] = useState(false);
+  const disabled = useSelector((state) => state.disabled);
 
   const removeAllCarsHandler = () => {
     dispatch({ type: "REMOVE_ALL_CARS" });
@@ -12,6 +13,7 @@ const ControlPanel = () => {
 
   const startRaceHandler = () => {
     setIsRaceAvailable((state) => (state = true));
+    dispatch({ type: "DISABLED" });
   };
 
   const drowRaceHandler = () => {
@@ -38,7 +40,11 @@ const ControlPanel = () => {
     <section>
       <h2 className={styles.controlPanelTitle}>Control panel:</h2>
       <div className={styles.controlPanelContainer}>
-        <button onClick={startRaceHandler} className={styles.btn}>
+        <button
+          onClick={startRaceHandler}
+          className={[styles.btn, styles.startBtn].join(" ")}
+          disabled={disabled}
+        >
           Start
         </button>
         <button onClick={removeAllCarsHandler} className={styles.btn}>
