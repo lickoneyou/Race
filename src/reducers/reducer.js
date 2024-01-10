@@ -52,6 +52,16 @@ export const reducer = (state, action) => {
       );
       state = JSON.parse(localStorage.getItem("race"));
       return state;
+    case "REFRESH":
+      localStorage.setItem(
+        "race",
+        JSON.stringify({
+          ...state,
+          raceCars: state.raceCars.map((el) => ({ ...el, pos: 0 })),
+        })
+      );
+      state = JSON.parse(localStorage.getItem("race"));
+      return state;
     default:
       return state;
   }

@@ -4,8 +4,17 @@ import HeaderGame from "./Components/Headers/HeaderGame";
 import HeaderScore from "./Components/Headers/HeaderScore";
 import MainGame from "./Components/Main/MainGame/MainGame";
 import MainScore from "./Components/Main/MainScore/MainScore";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+  const refreshHandler = () => {
+    dispatch({ type: "REFRESH" });
+  };
+
+  useEffect(() => refreshHandler(), []);
+
   return (
     <div className="App">
       <Router>
