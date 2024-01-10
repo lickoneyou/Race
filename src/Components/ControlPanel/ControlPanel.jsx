@@ -8,7 +8,7 @@ const ControlPanel = () => {
   const [isRaceAvailable, setIsRaceAvailable] = useState(false);
   const disabled = useSelector((state) => state.disabled);
   const raceCars = useSelector((state) => state.race.raceCars);
-  const [disabledRestartBtn, setDisabledRestartBtn] = useState(true);
+  const restartDisable = useSelector((state) => state.restartDisable);
 
   const notify = (text) =>
     toast.error(text, {
@@ -23,8 +23,10 @@ const ControlPanel = () => {
     });
 
   const removeAllCarsHandler = () => {
+    dispatch({ type: "RESTART_DISABLED" });
     dispatch({ type: "REMOVE_ALL_CARS" });
     dispatch({ type: "ENABLE" });
+    dispatch({ type: "SCORE_ENABLE" });
   };
 
   const startRaceHandler = () => {
@@ -33,6 +35,7 @@ const ControlPanel = () => {
     } else {
       setIsRaceAvailable((state) => (state = true));
       dispatch({ type: "DISABLED" });
+      dispatch({ type: "SCORE_DISABLED" });
     }
   };
 
@@ -43,7 +46,10 @@ const ControlPanel = () => {
       )
     ) {
       setIsRaceAvailable((state) => (state = false));
-      setDisabledRestartBtn((state) => (state = false));
+      dispatch({ type: "SCORE_ENABLE" });
+      if (raceCars.length) {
+        dispatch({ type: "RESTART_ENABLE" });
+      }
       return false;
     }
     dispatch({ type: "START" });
@@ -58,9 +64,10 @@ const ControlPanel = () => {
   });
 
   const restart = () => {
-    setDisabledRestartBtn((state) => (state = true));
+    dispatch({ type: "RESTART_DISABLED" });
     dispatch({ type: "REFRESH" });
     dispatch({ type: "ENABLE" });
+    dispatch({ type: "SCORE_ENABLE" });
   };
 
   return (
@@ -77,7 +84,7 @@ const ControlPanel = () => {
         <button
           className={[styles.btn, styles.disabledBtn].join(" ")}
           onClick={restart}
-          disabled={disabledRestartBtn}
+          disabled={restartDisable}
         >
           Restart
         </button>

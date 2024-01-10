@@ -14,3 +14,9 @@
   background-color: white;
   color: black;
 }
+
+.btn:disabled {
+  background-color: orangered;
+  border: 1px solid black;
+  color: black;
+}

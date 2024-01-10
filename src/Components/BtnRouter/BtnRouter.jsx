@@ -1,11 +1,15 @@
 import React from "react";
 import styles from "./BtnRouter.module.css";
 
-const BtnRouter = ({ href, name }) => {
+const BtnRouter = ({ href, name, disabled }) => {
+  console.log(disabled);
+
   return (
-    <a className={styles.btn} href={href}>
-      {name}
-    </a>
+    <form action={href}>
+      <button className={styles.btn} disabled={disabled}>
+        {name}
+      </button>
+    </form>
   );
 };
 
