@@ -39,7 +39,7 @@ export const CreateCar = () => {
       );
       return;
     }
-    if (cars.length == 5) {
+    if (cars.length === 5) {
       notify(
         `No more than 5 cars can participate in one race`
       );
