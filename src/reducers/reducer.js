@@ -3,6 +3,7 @@ import createCarsSpeedHandler from "../handlers/localStorageHandlers/createCarsS
 import deleteCarHandler from "../handlers/localStorageHandlers/deleteCarHandler";
 import refreshHandler from "../handlers/localStorageHandlers/refreshHandler";
 import removeAllCarsHandler from "../handlers/localStorageHandlers/removeAllCarsHandler";
+import resetScoreHandler from "../handlers/localStorageHandlers/resetScoreHandler";
 import startHandler from "../handlers/localStorageHandlers/startHandler";
 import winnerHandler from "../handlers/localStorageHandlers/winnerHandler";
 
@@ -33,6 +34,8 @@ export const reducer = (state, action) => {
       return createCarsSpeedHandler(state);
     case "WINNER":
       return winnerHandler(state, action);
+    case "RESET_SCORE":
+      return resetScoreHandler(state);
     default:
       return state;
   }
