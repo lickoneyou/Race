@@ -1,5 +1,7 @@
 const bestTime = (time, bestTime) => {
-  return bestTime <= time ? bestTime : time;
+  if (time > 0) {
+    return bestTime <= time ? bestTime : time;
+  }
 };
 
 export default bestTime;

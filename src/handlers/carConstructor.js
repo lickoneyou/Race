@@ -6,6 +6,6 @@ export class CarConstructor {
     this.speed = 0;
     this.pos = 0;
     this.time = 0;
-    this.bestTime = 0;
+    this.bestTime = 999;
   }
 }
