@@ -20,7 +20,7 @@ const Score = () => {
         <div className={styles.row} key={el}>
           <div className={styles.col}>{el}</div>
           <div className={styles.col}>{winners?.[index]?.name ?? ""}</div>
-          <div className={styles.col}>{winners?.[index]?.bestTime ?? ""}</div>
+          <div className={styles.col}>{winners?.[index] ? `${winners[index].bestTime}s` : ''}</div>
           <div className={styles.col}>{winners?.[index]?.wins ?? ""}</div>
         </div>
       ))}
