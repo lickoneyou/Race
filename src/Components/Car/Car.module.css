@@ -47,3 +47,9 @@
   right: 100px;
   top: -13px;
 }
+
+.btn:disabled {
+  background-color: orangered;
+  border: 1px solid black;
+  color: black;
+}

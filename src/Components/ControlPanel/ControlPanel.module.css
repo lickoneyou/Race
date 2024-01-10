@@ -30,7 +30,7 @@
   margin: 20px 0;
 }
 
-.startBtn:disabled {
+.disabledBtn:disabled {
   background-color: orangered;
   border: 1px solid black;
   color: black;

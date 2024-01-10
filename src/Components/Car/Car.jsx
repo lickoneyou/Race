@@ -6,6 +6,7 @@ import flag from "../../img/flag.png";
 
 const Car = () => {
   const cars = useSelector((state) => state.race.raceCars);
+  const disabled = useSelector((state) => state.disabled);
   const dispatch = useDispatch();
 
   const deleteCarHandler = (name) => {
@@ -25,6 +26,7 @@ const Car = () => {
             <button
               onClick={() => deleteCarHandler(car.name)}
               className={styles.btn}
+              disabled={disabled}
             >
               Delete this car
             </button>

@@ -6,6 +6,7 @@ const ControlPanel = () => {
   const dispatch = useDispatch();
   const [isRaceAvailable, setIsRaceAvailable] = useState(false);
   const disabled = useSelector((state) => state.disabled);
+  const [disabledRestartBtn, setDisabledRestartBtn] = useState(true);
 
   const removeAllCarsHandler = () => {
     dispatch({ type: "REMOVE_ALL_CARS" });
@@ -24,6 +25,7 @@ const ControlPanel = () => {
       )
     ) {
       setIsRaceAvailable((state) => (state = false));
+      setDisabledRestartBtn((state) => (state = false));
       return false;
     }
     dispatch({ type: "START" });
@@ -37,16 +39,29 @@ const ControlPanel = () => {
     return () => clearInterval(timer);
   });
 
+  const restart = () => {
+    setDisabledRestartBtn((state) => (state = true));
+    dispatch({ type: "REFRESH" });
+    dispatch({ type: "ENABLE" });
+  };
+
   return (
     <section>
       <h2 className={styles.controlPanelTitle}>Control panel:</h2>
       <div className={styles.controlPanelContainer}>
         <button
           onClick={startRaceHandler}
-          className={[styles.btn, styles.startBtn].join(" ")}
+          className={[styles.btn, styles.disabledBtn].join(" ")}
           disabled={disabled}
         >
           Start
+        </button>
+        <button
+          className={[styles.btn, styles.disabledBtn].join(" ")}
+          onClick={restart}
+          disabled={disabledRestartBtn}
+        >
+          Restart
         </button>
         <button onClick={removeAllCarsHandler} className={styles.btn}>
           Remove all cars
