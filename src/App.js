@@ -12,7 +12,8 @@ function App() {
   const refreshHandler = () => {
     dispatch({ type: "REFRESH" });
   };
-
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => refreshHandler(), []);
 
   return (
