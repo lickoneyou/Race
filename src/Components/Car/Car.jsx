@@ -5,7 +5,7 @@ import styles from "./Car.module.css";
 import flag from "../../img/flag.png";
 
 const Car = () => {
-  const cars = useSelector((state) => state.raceCars);
+  const cars = useSelector((state) => state.race.raceCars);
   const dispatch = useDispatch();
 
   const deleteCarHandler = (name) => {

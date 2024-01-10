@@ -9,7 +9,7 @@ export const CreateCar = () => {
   const [inputVaule, setInputValue] = useState("");
   const dispatch = useDispatch();
   const colorRef = useRef();
-  const cars = useSelector((state) => state.raceCars);
+  const cars = useSelector((state) => state.race.raceCars);
 
   const notify = (text) =>
     toast.error(text, {
