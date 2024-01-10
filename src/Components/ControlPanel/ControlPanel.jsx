@@ -52,7 +52,7 @@ const ControlPanel = () => {
 
       setIsRaceAvailable((state) => (state = false));
       dispatch({ type: "SCORE_ENABLE" });
-      dispatch({ type: "WINNER", payload: winner.name });
+      dispatch({ type: "WINNER", payload: winner });
       notify(`Car '${winner.name}' WIN!`);
       if (raceCars.length) {
         dispatch({ type: "RESTART_ENABLE" });
