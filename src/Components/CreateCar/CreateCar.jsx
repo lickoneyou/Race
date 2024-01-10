@@ -39,6 +39,12 @@ export const CreateCar = () => {
       );
       return;
     }
+    if (cars.length == 5) {
+      notify(
+        `No more than 5 cars can participate in one race`
+      );
+      return;
+    }
     dispatch({
       type: "ADD_CAR",
       payload: new CarConstructor(inputVaule, colorRef.current.value),
