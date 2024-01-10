@@ -1,6 +1,7 @@
 import bestTime from "../handlers/bestTime";
 import carSpeed from "../handlers/carSpeed";
 import addCarHandler from "../handlers/localStorageHandlers/addCarHandler";
+import removeAllCarsHandler from "../handlers/localStorageHandlers/removeAllCarsHandler";
 import time from "../handlers/time";
 
 export const reducer = (state, action) => {
@@ -19,15 +20,7 @@ export const reducer = (state, action) => {
     case "ADD_CAR":
       return addCarHandler(state, action);
     case "REMOVE_ALL_CARS":
-      localStorage.setItem(
-        "race",
-        JSON.stringify({
-          ...state,
-          raceCars: [],
-        })
-      );
-      state = JSON.parse(localStorage.getItem("race"));
-      return state;
+      return removeAllCarsHandler(state);
     case "DELETE_CAR": {
       localStorage.setItem(
         "race",
