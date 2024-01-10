@@ -80,7 +80,7 @@ export const reducer = (state, action) => {
         JSON.stringify({
           ...state,
           raceCars: state.raceCars.map((el) => {
-            if (el.name == action.payload) {
+            if (el.name === action.payload) {
               return { ...el, wins: el.wins + 1 };
             } else {
               return el;
