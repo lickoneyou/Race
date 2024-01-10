@@ -46,8 +46,14 @@ const ControlPanel = () => {
         (el) => el.pos >= 80
       )
     ) {
+      const winner = [...raceCars].sort(
+        (carA, carB) => carB.speed - carA.speed
+      )[0];
+
       setIsRaceAvailable((state) => (state = false));
       dispatch({ type: "SCORE_ENABLE" });
+      dispatch({ type: "WINNER", payload: winner.name });
+      notify(`Car '${winner.name}' WIN!`);
       if (raceCars.length) {
         dispatch({ type: "RESTART_ENABLE" });
       }
