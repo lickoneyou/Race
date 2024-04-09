@@ -14,10 +14,10 @@ const Car = () => {
   };
 
   return (
-    <div>
+    <div data-test='carContainer'>
       <h2>Race</h2>
       {cars.map((car) => (
-        <div key={Math.random() + car.name} className={styles.carContainer}>
+        <div data-test='car' key={Math.random() + car.name} className={styles.carContainer}>
           <CarImg color={car.color} pos={car.pos} />
           <img className={styles.flag} src={flag} alt="flag" />
           <hr className={styles.hr} />

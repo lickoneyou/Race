@@ -82,6 +82,7 @@ export const CreateCar = () => {
           onClick={onClickHandler}
           className={styles.createCarBtn}
           disabled={disabled}
+          data-test='createCarBtn'
         >
           Create Car
         </button>
